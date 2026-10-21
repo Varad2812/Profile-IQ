@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: #020b18;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .glass {
+    background: rgba(10, 25, 50, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 1rem;
+  }
+
+  .glass-sm {
+    background: rgba(10, 25, 50, 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    border-radius: 0.75rem;
+  }
+
+  .glow-blue  { box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
+  .glow-purple { box-shadow: 0 0 30px rgba(139, 92, 246, 0.15); }
+  .glow-green  { box-shadow: 0 0 30px rgba(16, 185, 129, 0.15); }
+  .glow-red    { box-shadow: 0 0 30px rgba(239, 68, 68, 0.15); }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.625rem;
+    color: #64748b;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .nav-link:hover { background: rgba(59,130,246,0.08); color: #94a3b8; }
+  .nav-link.active {
+    background: rgba(59,130,246,0.12);
+    color: #60a5fa;
+    border-color: rgba(59,130,246,0.2);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(59,130,246,0.25);
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
+  .btn-primary:disabled { opacity: 0.5; transform: none; cursor: not-allowed; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.75rem;
+    background: rgba(59,130,246,0.08);
+    color: #94a3b8;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid rgba(59,130,246,0.15);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-ghost:hover { background: rgba(59,130,246,0.15); color: #e2e8f0; }
+
+  .input-field {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.75rem;
+    background: rgba(5, 15, 35, 0.8);
+    border: 1px solid rgba(59,130,246,0.2);
+    color: #e2e8f0;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .input-field::placeholder { color: #334155; }
+  .input-field:focus { border-color: rgba(59,130,246,0.5); box-shadow: 0 0 0 3px rgba(59,130,246,0.08); }
+
+  .score-bar-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: rgba(59,130,246,0.1);
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, rgba(15,30,60,0.8) 25%, rgba(25,50,90,0.5) 50%, rgba(15,30,60,0.8) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 0.5rem;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 3s linear infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(59,130,246,0.2); }
+  50% { box-shadow: 0 0 30px rgba(59,130,246,0.4); }
+}
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.25); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,0.4); }
